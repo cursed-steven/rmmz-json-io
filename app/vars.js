@@ -1,4 +1,0 @@
-/**
- * Variables
- */
-let $fileContent;

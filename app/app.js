@@ -1,13 +1,19 @@
 /**
- * Main routine.
+ * Globals
+ */
+let $objJson = null;
+let $csv = null;
+let $filenameFromUrl = '';
+
+/**
+ * Main routine
  */
 function main() {
+    $filenameFromUrl = location.href.split('/').pop().split('.')[0];
+
     // View
     document.title = TITLE;
     mainNav();
-
-    // Listeners
-    addAllEventListenersForFileLoad();
 }
 
 /**
@@ -25,8 +31,7 @@ function navLink(key, val) {
     a.attr('href', key + '.html');
     a.text(val);
 
-    const filenameFromUrl = location.href.split('/').pop().split('.')[0];
-    if (key === filenameFromUrl) {
+    if (key === $filenameFromUrl) {
         a.addClass('active');
     }
 
@@ -34,22 +39,4 @@ function navLink(key, val) {
     li.append(a);
 
     return li;
-}
-
-/**
- * Common Functions
- */
-function addAllEventListenersForFileLoad() {
-    $('input[type="file"]').each(function(ix, el){
-        addEventListenerForFileLoad($(el).attr('id'));
-    });
-}
-
-function addEventListenerForFileLoad(id) {
-    let input = document.getElementById(id);
-    let reader = new FileReader();
-
-    input.on('change', function(){
-        $fileContent = loadFormFile(reader);
-    });
 }

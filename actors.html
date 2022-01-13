@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload" onload="main();">
+	<body class="is-preload" onload="main();actors();">
 
 		<!-- Header -->
         <header id="header">
@@ -30,34 +30,34 @@
                         <!-- Table -->
                             <section>
                                 <h2>Actors.json</h2>
-                                <ul>
+                                <ul class="alt">
                                     <li>
                                         <div class="row gtr-uniform">
                                             <div class="col-12">
-                                                Actors.json を読み込んで Actors.csv を出力する。
+                                                jsonファイルを指定して &quot;SAVE AS CSV&quot; を押すと、Actors.json を読み込んで Actors.csv を出力する。
                                             </div>
                                         </div>
                                         <div class="row gtr-uniform">
                                             <div class="col-6 col-12-xsmall">
-                                                <input type="file" name="upload-json" id="upload-json" placeholder="abc" value="" />
+                                                <input type="file" name="upload_json" id="upload_json" value="" />
                                             </div>
                                             <div class="col-6 col-12-xsmall">
-                                                <a href="#" id="save-csv" class="button icon solid fa-save">Save as csv</a>
+                                                <a href="#" id="save_csv" class="button icon solid fa-save" download="Actors.csv">Save as csv</a>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="row gtr-uniform">
                                             <div class="col-12">
-                                                Actors.csv を読み込んで Actors.json を出力する。
+                                                csvファイルを指定して &quot;SAVE AS JSON&quot; を押すと、Actors.csv を読み込んで Actors.json を出力する。
                                             </div>
                                         </div>
                                         <div class="row gtr-uniform">
                                             <div class="col-6 col-12-xsmall">
-                                                <input type="file" name="upload-csv" id="upload-csv" value="" />
+                                                <input type="file" name="upload_csv" id="upload_csv" value="" />
                                             </div>
                                             <div class="col-6 col-12-xsmall">
-                                                <a href="#" id="save-json" class="button icon solid fa-save">Save as json</a>
+                                                <a href="#" id="save_json" class="button icon solid fa-save" download="Actors.json">Save as json</a>
                                             </div>
                                         </div>
                                     </li>
@@ -89,7 +89,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="app/statics.js"></script>
-			<script src="app/vars.js"></script>
 			<script src="app/app.js"></script>
+			<script src="app/actors.js"></script>
 	</body>
 </html>
