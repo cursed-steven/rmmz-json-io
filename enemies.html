@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload" onload="main();enemies();">
+
+		<!-- Header -->
+        <header id="header">
+            <a href="index.html" class="title">RMMZ json-io</a>
+            <nav>
+                <ul id="nav-ul"></ul>
+            </nav>
+        </header>
+
+		<!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+                <section id="main" class="wrapper">
+                    <div class="inner">
+                        <!-- Table -->
+                            <section>
+                                <h2>Enemies.json</h2>
+                                <div>
+                                    <p>「タイプ」「行動パターン」もcsvに書き出しますが編集しないでください(データが壊れます)。編集しなければそのままjsonに戻ります。
+                                        <br>csv編集時改行を入れたい場合は「&lt;改行&gt;」と記述してください。</p>
+                                </div>
+                                <ul class="alt">
+                                    <li>
+                                        <div class="row gtr-uniform">
+                                            <div class="col-12">
+                                                jsonファイルを指定して &quot;SAVE AS CSV&quot; を押すと、Enemies.json を読み込んで Enemies.csv を出力する。
+                                            </div>
+                                        </div>
+                                        <div class="row gtr-uniform">
+                                            <div class="col-6 col-12-xsmall">
+                                                <input type="file" name="upload_json" id="upload_json" value="" />
+                                            </div>
+                                            <div class="col-6 col-12-xsmall">
+                                                <a href="#" id="save_csv" class="button icon solid fa-save" download="Enemies.csv">Save as csv</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row gtr-uniform">
+                                            <div class="col-12">
+                                                csvファイルを指定して &quot;SAVE AS JSON&quot; を押すと、Enemies.csv を読み込んで Enemies.json を出力する。
+                                            </div>
+                                        </div>
+                                        <div class="row gtr-uniform">
+                                            <div class="col-6 col-12-xsmall">
+                                                <input type="file" name="upload_csv" id="upload_csv" value="" />
+                                            </div>
+                                            <div class="col-6 col-12-xsmall">
+                                                <a href="#" id="save_json" class="button icon solid fa-save" download="Enemies.json">Save as json</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="table-wrapper">
+                                    <table class="alt"></table>
+                                </div>
+                            </section>
+                    </div>
+                </section>
+        </div>
+
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="app/statics.js"></script>
+			<script src="app/app.js"></script>
+			<script src="app/enemies.js"></script>
+			<script src="app/models.js"></script>
+	</body>
+</html>

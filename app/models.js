@@ -35,3 +35,35 @@ function newArmor() {
         price: 0, 
     };
 }
+
+function newEnemy() {
+    return {
+        id: 0, 
+        actions: null, 
+        battlerHue: 0, 
+        battlerName: '', 
+        dropItems: [
+            {
+                dataId: 0, 
+                denominator: 0, 
+                kind: 0, 
+            }, 
+            {
+                dataId: 0, 
+                denominator: 0, 
+                kind: 0, 
+            }, 
+            {
+                dataId: 0, 
+                denominator: 0, 
+                kind: 0, 
+            }, 
+        ], 
+        exp: 0, 
+        traits: null, 
+        gold: 0, 
+        name: '', 
+        note: '', 
+        params: [0, 0, 0, 0, 0, 0, 0, 0], 
+    };
+}

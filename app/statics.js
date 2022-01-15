@@ -6,7 +6,7 @@
  const NAV = {
     mapInfos: 'Map Info', 
     actors: 'Actors', 
-    classes: 'Classes', 
+    //classes: 'Classes', 
     items: 'Items', 
     skills: 'Skills', 
     enemies: 'Enemies', 
