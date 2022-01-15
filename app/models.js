@@ -67,3 +67,31 @@ function newEnemy() {
         params: [0, 0, 0, 0, 0, 0, 0, 0], 
     };
 }
+
+function newItem() {
+    return {
+        id: 0, 
+        animationId: 0, 
+        consumable: false, 
+        damage: {
+            critical: false, 
+            elementId: 0, 
+            formula: '', 
+            type: 0, 
+            variance: 0, 
+        }, 
+        description: '', 
+        effects: null, 
+        hitType: 0, 
+        itypeId: 0, 
+        name: '', 
+        note: '', 
+        occasion: 0, 
+        price: 0, 
+        repeats: 0, 
+        scope: 0, 
+        speed: 0, 
+        successRate: 0, 
+        tpGain: 0, 
+    };
+}
