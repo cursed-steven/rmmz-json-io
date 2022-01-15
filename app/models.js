@@ -83,6 +83,7 @@ function newItem() {
         description: '', 
         effects: null, 
         hitType: 0, 
+        iconIndex: 0, 
         itypeId: 0, 
         name: '', 
         note: '', 
