@@ -130,3 +130,32 @@ function newSkill() {
         messageType: 0, 
     };
 }
+
+function newState() {
+    return {
+        id: 0, 
+        autoRemovalTiming: 0, 
+        chanceByDamage: 0, 
+        iconIndex: 0, 
+        maxTurns: 0, 
+        message1: '', 
+        message2: '', 
+        message3: '', 
+        message4: '', 
+        minTurns: 0, 
+        motion: 0, 
+        name: '', 
+        note: '', 
+        overlay: 0, 
+        priority: 0, 
+        releaseByDamage: true, 
+        removeAtBattleEnd: true, 
+        removeByDamage: true, 
+        removeByRestriction: true, 
+        removeByWalking: true, 
+        restriction: 0, 
+        stepsToRemove: 0, 
+        traits: null, 
+        messageType: 0, 
+    };
+}
