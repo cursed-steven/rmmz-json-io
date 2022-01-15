@@ -20,3 +20,18 @@ function newActor() {
         profile: '', 
     };
 }
+
+function newArmor() {
+    return {
+        id: 0, 
+        atypeId: 0, 
+        description: '', 
+        etypeId: 0, 
+        traits: null, 
+        iconIndex: 0, 
+        name: '', 
+        note: '', 
+        params: [0, 0, 0, 0, 0, 0, 0, 0], 
+        price: 0, 
+    };
+}
