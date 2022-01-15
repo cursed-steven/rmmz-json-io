@@ -48,3 +48,9 @@ function encodeJsonData(json) {
 function decodeJsonData(str) {
     return JSON.parse(decodeURIComponent(str));
 }
+
+ function ext(file) {
+     let pos = file.name.lastIndexOf('.');
+     if (pos === -1) return false;
+     return file.name.slice(pos + 1);
+ }

@@ -2,7 +2,7 @@
  * Main routine
  */
 function actors() {
-    let reader = new FileReader();
+    let reader;
     let url = null;
 
     // Listeners
@@ -12,6 +12,12 @@ function actors() {
         for (let file of inputUploadJson.files) {
             $objJson = null;
             $csv = null;
+            reader = new FileReader();
+
+            if (ext(file).toLowerCase() !== 'json') {
+                alert('jsonファイルを指定してください。');
+                continue;
+            }
 
             reader.readAsText(file, 'UTF-8');
             reader.onload = ()=>{
@@ -34,6 +40,12 @@ function actors() {
          for (let file of inputUploadCsv.files) {
             $objJson = null;
             $csv = null;
+            reader = new FileReader();
+
+            if (ext(file).toLowerCase() !== 'csv') {
+                alert('csvファイルを指定してください。');
+                continue;
+            }
 
             reader.readAsText(file, 'UTF-8');
             reader.onload = ()=>{
@@ -77,7 +89,7 @@ function convertActorsJsonToCsv() {
         'メモ', 
         'プロフィール', 
     ];
-    rows.push(col0);
+    rows.push(col0.join("\t"));
 
     for (let i = 1; i < $objJson.length; i++) {
         col = [
@@ -98,10 +110,10 @@ function convertActorsJsonToCsv() {
             $objJson[i].maxLevel, 
             $objJson[i].name, 
             $objJson[i].nickname, 
-            $objJson[i].note, 
+            $objJson[i].note.replaceAll("\n", "<改行>"), 
             $objJson[i].profile.replaceAll("\n", "<改行>"), 
         ];
-        rows.push(col.join(','));
+        rows.push(col.join("\t"));
     }
 
     return rows.join("\n");
@@ -114,26 +126,26 @@ function convertActorsCsvToJson() {
     let json = [null];
 
     for (let i = 1; i < rows.length; i++) {
-        col = rows[i].split(',');
+        col = rows[i].split("\t");
 
         actor = newActor();
-        actor.id = col[0];
+        actor.id = parseInt(col[0]);
         actor.battlerName = col[1];
-        actor.characterIndex = col[2];
+        actor.characterIndex = parseInt(col[2]);
         actor.characterName = col[3];
-        actor.classId = col[4];
+        actor.classId = parseInt(col[4]);
         actor.equips = [
-            col[5], 
-            col[6], 
-            col[7], 
-            col[8], 
-            col[9]
+            parseInt(col[5]), 
+            parseInt(col[6]), 
+            parseInt(col[7]), 
+            parseInt(col[8]), 
+            parseInt(col[9])
         ];
-        actor.faceIndex = col[10];
+        actor.faceIndex = parseInt(col[10]);
         actor.faceName = col[11];
         actor.traits = decodeJsonData(col[12]);
-        actor.initialLevel = col[13];
-        actor.maxLevel = col[14];
+        actor.initialLevel = parseInt(col[13]);
+        actor.maxLevel = parseInt(col[14]);
         actor.name = col[15];
         actor.nickname = col[16];
         actor.note = col[17];
