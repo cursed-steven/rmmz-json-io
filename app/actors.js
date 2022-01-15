@@ -69,6 +69,7 @@ function convertActorsJsonToCsv() {
         '装備5', 
         '顔グラインデックス', 
         '顔グラ名', 
+        '特徴(編集不可)', 
         '初期レベル', 
         '最大レベル', 
         'アクター名', 
@@ -92,6 +93,7 @@ function convertActorsJsonToCsv() {
             $objJson[i].equips[4], 
             $objJson[i].faceIndex, 
             $objJson[i].faceName, 
+            encodeJsonData($objJson[i].traits), 
             $objJson[i].initialLevel, 
             $objJson[i].maxLevel, 
             $objJson[i].name, 
@@ -129,12 +131,13 @@ function convertActorsCsvToJson() {
         ];
         actor.faceIndex = col[10];
         actor.faceName = col[11];
-        actor.initialLevel = col[12];
-        actor.maxLevel = col[13];
-        actor.name = col[14];
-        actor.nickname = col[15];
-        actor.note = col[16];
-        actor.profile = col[17];
+        actor.traits = decodeJsonData(col[12]);
+        actor.initialLevel = col[13];
+        actor.maxLevel = col[14];
+        actor.name = col[15];
+        actor.nickname = col[16];
+        actor.note = col[17];
+        actor.profile = col[18];
 
         json.push(actor);
     }

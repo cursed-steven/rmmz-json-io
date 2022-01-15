@@ -40,3 +40,11 @@ function navLink(key, val) {
 
     return li;
 }
+
+function encodeJsonData(json) {
+    return encodeURIComponent(JSON.stringify(json));
+}
+
+function decodeJsonData(str) {
+    return JSON.parse(decodeURIComponent(str));
+}
