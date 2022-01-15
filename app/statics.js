@@ -4,7 +4,7 @@
  const TITLE = 'RMMZ json-io';
 
  const NAV = {
-    mapInfos: 'Map Info', 
+    //mapInfos: 'Map Info', 
     actors: 'Actors', 
     //classes: 'Classes', 
     items: 'Items', 
