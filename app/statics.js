@@ -11,7 +11,7 @@
     skills: 'Skills', 
     enemies: 'Enemies', 
     states: 'States', 
-    troops: 'Troops', 
+    //troops: 'Troops', 
     weapons: 'Weapons', 
     armors: 'Armors', 
 };
