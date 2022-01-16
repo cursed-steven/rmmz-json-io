@@ -136,13 +136,13 @@ function convertEnemiesJsonToCsv() {
 function convertEnemiesCsvToJson() {
     const rows = $csv.split("\n");
     let col;
-    let armor;
+    let enemy;
     let json = [null];
 
     for (let i = 1; i < rows.length; i++) {
         col = rows[i].split("\t");
 
-        let enemy = newEnemy();
+        enemy = newEnemy();
         enemy.id = parseInt(col[0]);
         enemy.actions = decodeJsonData(col[1]);
         enemy.battlerHue = parseInt(col[2]);

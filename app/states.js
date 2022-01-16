@@ -132,13 +132,13 @@ function convertStatesJsonToCsv() {
 function convertStatesCsvToJson() {
     const rows = $csv.split("\n");
     let col;
-    let armor;
+    let state;
     let json = [null];
 
     for (let i = 1; i < rows.length; i++) {
         col = rows[i].split("\t");
 
-        let state = newState();
+        state = newState();
         state.id = parseInt(col[0]);
         state.autoRemovalTiming = parseInt(col[1]);
         state.chanceByDamage = parseInt(col[2]);

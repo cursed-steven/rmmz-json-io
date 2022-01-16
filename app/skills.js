@@ -138,13 +138,13 @@ function convertSkillsJsonToCsv() {
 function convertSkillsCsvToJson() {
     const rows = $csv.split("\n");
     let col;
-    let armor;
+    let skill;
     let json = [null];
 
     for (let i = 1; i < rows.length; i++) {
         col = rows[i].split("\t");
 
-        let skill = newSkill();
+        skill = newSkill();
         skill.id = parseInt(col[0]);
         skill.animationId = parseInt(col[1]);
         skill.damage = {

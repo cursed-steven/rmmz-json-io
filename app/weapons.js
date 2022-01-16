@@ -120,13 +120,13 @@ function convertWeaponsJsonToCsv() {
 function convertWeaponsCsvToJson() {
     const rows = $csv.split("\n");
     let col;
-    let armor;
+    let weapon;
     let json = [null];
 
     for (let i = 1; i < rows.length; i++) {
         col = rows[i].split("\t");
 
-        let weapon = newWeapon();
+        weapon = newWeapon();
         weapon.id = parseInt(col[0]);
         weapon.animationId = parseInt(col[1]);
         weapon.description = col[2];

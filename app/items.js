@@ -128,13 +128,13 @@ function convertItemsJsonToCsv() {
 function convertItemsCsvToJson() {
     const rows = $csv.split("\n");
     let col;
-    let armor;
+    let item;
     let json = [null];
 
     for (let i = 1; i < rows.length; i++) {
         col = rows[i].split("\t");
 
-        let item = newItem();
+        item = newItem();
         item.id = parseInt(col[0]);
         item.animationId = parseInt(col[1]);
         item.consumable = col[2] == 'true' || col[2] == '1' ? true : false;
