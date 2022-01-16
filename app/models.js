@@ -159,3 +159,19 @@ function newState() {
         messageType: 0, 
     };
 }
+
+function newWeapon() {
+    return {
+        id: 0, 
+        animationId: 0, 
+        description: '', 
+        etypeId: 0, 
+        traits: null, 
+        iconIndex: 0, 
+        name: '', 
+        note: '', 
+        params: [0, 0, 0, 0, 0, 0, 0, 0], 
+        price: 0, 
+        wtypeId: 0, 
+    };
+}
