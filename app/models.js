@@ -165,7 +165,7 @@ function newWeapon() {
         id: 0, 
         animationId: 0, 
         description: '', 
-        etypeId: 0, 
+        etypeId: 1, 
         traits: null, 
         iconIndex: 0, 
         name: '', 

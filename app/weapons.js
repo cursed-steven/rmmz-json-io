@@ -70,46 +70,44 @@ function convertWeaponsJsonToCsv() {
     let col;
     const col0 = [
         'ID', 
-        'アニメーションID', 
-        '説明', 
-        '装備タイプID', 
-        '特徴(編集不可)', 
-        'アイコンインデックス', 
         '名前', 
-        'メモ', 
-        '最大HP', 
-        '最大MP', 
+        'アイコン', 
+        '説明', 
+        '武器タイプID', 
+        '価格', 
+        'アニメーションID', 
         '攻撃力', 
         '防御力', 
         '魔法力', 
         '魔法防御', 
         '敏捷性', 
         '運', 
-        '価格', 
-        '武器タイプID', 
+        '最大HP', 
+        '最大MP', 
+        '特徴(編集不可)', 
+        'メモ', 
     ];
     rows.push(col0.join("\t"));
 
     for (let i = 1; i < $objJson.length; i++) {
         col = [
             $objJson[i].id, 
-            $objJson[i].animationId, 
-            $objJson[i].description.replaceAll("\n", "<改行>"), 
-            $objJson[i].etypeId, 
-            encodeJsonData($objJson[i].traits), 
-            $objJson[i].iconIndex, 
             $objJson[i].name, 
-            $objJson[i].note.replaceAll("\n", "<改行>"), 
-            $objJson[i].params[0], 
-            $objJson[i].params[1], 
+            $objJson[i].iconIndex, 
+            $objJson[i].description.replaceAll("\n", "<改行>"), 
+            $objJson[i].wtypeId, 
+            $objJson[i].price, 
+            $objJson[i].animationId, 
             $objJson[i].params[2], 
             $objJson[i].params[3], 
             $objJson[i].params[4], 
             $objJson[i].params[5], 
             $objJson[i].params[6], 
             $objJson[i].params[7], 
-            $objJson[i].price, 
-            $objJson[i].wtypeId, 
+            $objJson[i].params[0], 
+            $objJson[i].params[1], 
+            encodeJsonData($objJson[i].traits), 
+            $objJson[i].note.replaceAll("\n", "<改行>"), 
         ];
         rows.push(col.join("\t"));
     }
@@ -128,25 +126,24 @@ function convertWeaponsCsvToJson() {
 
         weapon = newWeapon();
         weapon.id = parseInt(col[0]);
-        weapon.animationId = parseInt(col[1]);
-        weapon.description = col[2];
-        weapon.etypeId = parseInt(col[3]);
-        weapon.traits = decodeJsonData(col[4]);
-        weapon.iconIndex = parseInt(col[5]);
-        weapon.name = col[6];
-        weapon.note = col[7];
+        weapon.name = col[1];
+        weapon.iconIndex = parseInt(col[2]);
+        weapon.description = col[3];
+        weapon.wtypeId = parseInt(col[4]);
+        weapon.price = parseInt(col[5]);
+        weapon.animationId = parseInt(col[6]);
         weapon.params = [
+            parseInt(col[13]), 
+            parseInt(col[14]), 
+            parseInt(col[7]), 
             parseInt(col[8]), 
             parseInt(col[9]), 
             parseInt(col[10]), 
             parseInt(col[11]), 
             parseInt(col[12]), 
-            parseInt(col[13]), 
-            parseInt(col[14]), 
-            parseInt(col[15]), 
         ];
-        weapon.price = parseInt(col[16]);
-        weapon.wtypeId = parseInt(col[17]);
+        weapon.traits = decodeJsonData(col[15]);
+        weapon.note = col[16];
 
         json.push(weapon);
     }
