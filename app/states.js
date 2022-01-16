@@ -70,28 +70,28 @@ function convertStatesJsonToCsv() {
     let col;
     const col0 = [
         'ID', 
+        '名前', 
+        'アイコン', 
+        '行動制約', 
+        '優先度', 
+        'モーション(SV)', 
+        '重ね合わせ(SV)', 
+        '戦闘終了時に解除', 
+        '行動制約で解除', 
         '自動解除タイミング', 
+        '最小継続ターン数', 
+        '最大継続ターン数', 
+        'ダメージで解除', 
         'ダメージ時の解除率', 
-        'アイコンインデックス', 
-        '最大継続ターン', 
+        '歩きで解除', 
+        '解除までの歩数', 
         'アクター発生時メッセージ', 
         '敵発生時メッセージ', 
         '継続時メッセージ', 
         '解除時メッセージ', 
-        '最小継続ターン', 
-        'モーション(SV)', 
-        '名前', 
-        'メモ', 
-        '重ね合わせ(SV)', 
-        '優先度', 
-        '???', 
-        '戦闘終了時に解除', 
-        'ダメージで解除', 
-        '行動制限で解除', 
-        '歩きで解除', 
-        '行動制限', 
-        '解除までの歩数', 
         '特徴(編集不可)', 
+        'メモ', 
+        '???', 
         'メッセージタイプ', 
     ];
     rows.push(col0.join("\t"));
@@ -99,28 +99,28 @@ function convertStatesJsonToCsv() {
     for (let i = 1; i < $objJson.length; i++) {
         col = [
             $objJson[i].id, 
-            $objJson[i].autoRemovalTiming, 
-            $objJson[i].chanceByDamage, 
+            $objJson[i].name, 
             $objJson[i].iconIndex, 
+            $objJson[i].restriction, 
+            $objJson[i].priority, 
+            $objJson[i].motion, 
+            $objJson[i].overlay, 
+            $objJson[i].removeAtBattleEnd, 
+            $objJson[i].removeByRestriction, 
+            $objJson[i].autoRemovalTiming, 
+            $objJson[i].minTurns, 
             $objJson[i].maxTurns, 
+            $objJson[i].removeByDamage, 
+            $objJson[i].chanceByDamage, 
+            $objJson[i].removeByWalking, 
+            $objJson[i].stepsToRemove, 
             $objJson[i].message1, 
             $objJson[i].message2, 
             $objJson[i].message3, 
             $objJson[i].message4,
-            $objJson[i].minTurns, 
-            $objJson[i].motion, 
-            $objJson[i].name, 
-            $objJson[i].note.replaceAll("\n", "<改行>"), 
-            $objJson[i].overlay, 
-            $objJson[i].priority, 
-            $objJson[i].releaseByDamage, 
-            $objJson[i].removeAtBattleEnd, 
-            $objJson[i].removeByDamage, 
-            $objJson[i].removeByRestriction, 
-            $objJson[i].removeByWalking, 
-            $objJson[i].restriction, 
-            $objJson[i].stepsToRemove, 
             encodeJsonData($objJson[i].traits), 
+            $objJson[i].note.replaceAll("\n", "<改行>"), 
+            $objJson[i].releaseByDamage, 
             $objJson[i].messageType, 
         ];
         rows.push(col.join("\t"));
@@ -140,28 +140,28 @@ function convertStatesCsvToJson() {
 
         state = newState();
         state.id = parseInt(col[0]);
-        state.autoRemovalTiming = parseInt(col[1]);
-        state.chanceByDamage = parseInt(col[2]);
-        state.iconIndex = parseInt(col[3]);
-        state.maxTurns = parseInt(col[4]);
-        state.message1 = col[5];
-        state.message2 = col[6];
-        state.message3 = col[7];
-        state.message4 = col[8];
-        state.minTurns = parseInt(col[9]);
-        state.motion = parseInt(col[10]);
-        state.name = col[11];
-        state.note = col[12];
-        state.overlay = parseInt(col[13]);
-        state.priority = parseInt(col[14]);
-        state.releaseByDamage = col[15] == 'true' || col[15] == '1' ? true : false;
-        state.removeAtBattleEnd = col[16] == 'true' || col[16] == '1' ? true : false;
-        state.removeByDamage = col[17] == 'true' || col[17] == '1' ? true : false;
-        state.removeByRestriction = col[18] == 'true' || col[18] == '1' ? true : false;
-        state.removeByWalking = col[19] == 'true' || col[19] == '1' ? true : false;
-        state.restriction = parseInt(col[20]);
-        state.stepsToRemove = parseInt(col[21]);
-        state.traits = decodeJsonData(col[22]);
+        state.name = col[1];
+        state.iconIndex = parseInt(col[2]);
+        state.restriction = parseInt(col[3]);
+        state.priority = parseInt(col[4]);
+        state.motion = parseInt(col[5]);
+        state.overlay = parseInt(col[6]);
+        state.removeAtBattleEnd = col[7] == 'true' || col[7] == '1' ? true : false;
+        state.removeByRestriction = col[8] == 'true' || col[8] == '1' ? true : false;
+        state.autoRemovalTiming = parseInt(col[9]);
+        state.minTurns = parseInt(col[10]);
+        state.maxTurns = parseInt(col[11]);
+        state.removeByDamage = col[12] == 'true' || col[12] == '1' ? true : false;
+        state.chanceByDamage = parseInt(col[13]);
+        state.removeByWalking = col[14] == 'true' || col[14] == '1' ? true : false;
+        state.stepsToRemove = parseInt(col[15]);
+        state.message1 = col[16];
+        state.message2 = col[17];
+        state.message3 = col[18];
+        state.message4 = col[19];
+        state.traits = decodeJsonData(col[20]);
+        state.note = col[21];
+        state.releaseByDamage = col[22] == 'true' || col[22] == '1' ? true : false;
         state.messageType = parseInt(col[23]);
 
         json.push(state);
