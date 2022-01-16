@@ -70,9 +70,19 @@ function convertEnemiesJsonToCsv() {
     let col;
     const col0 = [
         'ID', 
-        '行動パターン(編集不可)', 
-        'バトラー色相', 
+        '名前', 
         'バトラー名', 
+        'バトラー色相', 
+        '最大HP', 
+        '最大MP', 
+        '攻撃力', 
+        '防御力', 
+        '魔法力', 
+        '魔法防御', 
+        '敏捷性', 
+        '運', 
+        '経験値', 
+        'ゴールド', 
         'ドロップ1_種別', 
         'ドロップ1_ID', 
         'ドロップ1_1/n', 
@@ -82,28 +92,28 @@ function convertEnemiesJsonToCsv() {
         'ドロップ3_種別', 
         'ドロップ3_ID', 
         'ドロップ3_1/n', 
-        '経験値', 
+        '行動パターン(編集不可)', 
         '特徴(編集不可)', 
-        'ゴールド', 
-        '名前', 
         'メモ', 
-        '最大HP', 
-        '最大MP', 
-        '攻撃力', 
-        '防御力', 
-        '魔法力', 
-        '魔法防御', 
-        '敏捷性', 
-        '運', 
     ];
     rows.push(col0.join("\t"));
 
     for (let i = 1; i < $objJson.length; i++) {
         col = [
             $objJson[i].id, 
-            encodeJsonData($objJson[i].actions), 
-            $objJson[i].battlerHue, 
+            $objJson[i].name, 
             $objJson[i].battlerName, 
+            $objJson[i].battlerHue, 
+            $objJson[i].params[0], 
+            $objJson[i].params[1], 
+            $objJson[i].params[2], 
+            $objJson[i].params[3], 
+            $objJson[i].params[4], 
+            $objJson[i].params[5], 
+            $objJson[i].params[6], 
+            $objJson[i].params[7], 
+            $objJson[i].exp, 
+            $objJson[i].gold, 
             $objJson[i].dropItems[0].kind, 
             $objJson[i].dropItems[0].dataId, 
             $objJson[i].dropItems[0].denominator, 
@@ -113,19 +123,9 @@ function convertEnemiesJsonToCsv() {
             $objJson[i].dropItems[2].kind, 
             $objJson[i].dropItems[2].dataId, 
             $objJson[i].dropItems[2].denominator, 
-            $objJson[i].exp, 
+            encodeJsonData($objJson[i].actions), 
             encodeJsonData($objJson[i].traits), 
-            $objJson[i].gold, 
-            $objJson[i].name, 
             $objJson[i].note.replaceAll("\n", "<改行>"), 
-            $objJson[i].params[0], 
-            $objJson[i].params[1], 
-            $objJson[i].params[2], 
-            $objJson[i].params[3], 
-            $objJson[i].params[4], 
-            $objJson[i].params[5], 
-            $objJson[i].params[6], 
-            $objJson[i].params[7], 
         ];
         rows.push(col.join("\t"));
     }
@@ -144,41 +144,41 @@ function convertEnemiesCsvToJson() {
 
         enemy = newEnemy();
         enemy.id = parseInt(col[0]);
-        enemy.actions = decodeJsonData(col[1]);
-        enemy.battlerHue = parseInt(col[2]);
-        enemy.battlerName = col[3];
+        enemy.name = col[1];
+        enemy.battlerName = col[2];
+        enemy.battlerHue = parseInt(col[3]);
+        enemy.params = [
+            parseInt(col[4]), 
+            parseInt(col[5]), 
+            parseInt(col[6]), 
+            parseInt(col[7]), 
+            parseInt(col[8]), 
+            parseInt(col[9]), 
+            parseInt(col[10]), 
+            parseInt(col[11]), 
+        ];
+        enemy.exp = parseInt(col[12]);
+        enemy.gold = parseInt(col[13]);
         enemy.dropItems = [
             {
-                kind: parseInt(col[4]), 
-                dataId: parseInt(col[5]), 
-                denominator: parseInt(col[6]), 
+                kind: parseInt(col[14]), 
+                dataId: parseInt(col[15]), 
+                denominator: parseInt(col[16]), 
             }, 
             {
-                kind: parseInt(col[7]), 
-                dataId: parseInt(col[8]), 
-                denominator: parseInt(col[9]), 
+                kind: parseInt(col[17]), 
+                dataId: parseInt(col[18]), 
+                denominator: parseInt(col[19]), 
             }, 
             {
-                kind: parseInt(col[10]), 
-                dataId: parseInt(col[11]), 
-                denominator: parseInt(col[12]), 
+                kind: parseInt(col[20]), 
+                dataId: parseInt(col[21]), 
+                denominator: parseInt(col[22]), 
             }
         ];
-        enemy.exp = parseInt(col[13]);
-        enemy.traits = decodeJsonData(col[14]);
-        enemy.gold = parseInt(col[15]);
-        enemy.name = col[16];
-        enemy.note = col[17];
-        enemy.params = [
-            parseInt(col[18]), 
-            parseInt(col[19]), 
-            parseInt(col[20]), 
-            parseInt(col[21]), 
-            parseInt(col[22]), 
-            parseInt(col[23]), 
-            parseInt(col[24]), 
-            parseInt(col[25]), 
-        ];
+        enemy.actions = decodeJsonData(col[23]);
+        enemy.traits = decodeJsonData(col[24]);
+        enemy.note = col[25];
 
         json.push(enemy);
     }
