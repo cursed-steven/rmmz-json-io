@@ -70,48 +70,48 @@ function convertActorsJsonToCsv() {
     let col;
     const col0 = [
         'ID', 
-        'バトラー名', 
-        'キャラインデックス', 
-        'キャラ名', 
+        'アクター名', 
+        '二つ名', 
         '職業ID', 
+        '初期レベル', 
+        '最大レベル', 
+        'プロフィール', 
+        '顔グラ名', 
+        '顔グラインデックス', 
+        '歩行キャラ', 
+        '歩行キャラインデックス', 
+        '戦闘キャラ(SV)', 
         '装備1', 
         '装備2', 
         '装備3', 
         '装備4', 
         '装備5', 
-        '顔グラインデックス', 
-        '顔グラ名', 
         '特徴(編集不可)', 
-        '初期レベル', 
-        '最大レベル', 
-        'アクター名', 
-        '二つ名', 
         'メモ', 
-        'プロフィール', 
     ];
     rows.push(col0.join("\t"));
 
     for (let i = 1; i < $objJson.length; i++) {
         col = [
             $objJson[i].id, 
-            $objJson[i].battlerName, 
-            $objJson[i].characterIndex, 
-            $objJson[i].characterName, 
+            $objJson[i].name, 
+            $objJson[i].nickname, 
             $objJson[i].classId, 
+            $objJson[i].initialLevel, 
+            $objJson[i].maxLevel, 
+            $objJson[i].profile.replaceAll("\n", "<改行>"), 
+            $objJson[i].faceName, 
+            $objJson[i].faceIndex, 
+            $objJson[i].characterName, 
+            $objJson[i].characterIndex, 
+            $objJson[i].battlerName, 
             $objJson[i].equips[0], 
             $objJson[i].equips[1], 
             $objJson[i].equips[2], 
             $objJson[i].equips[3], 
             $objJson[i].equips[4], 
-            $objJson[i].faceIndex, 
-            $objJson[i].faceName, 
             encodeJsonData($objJson[i].traits), 
-            $objJson[i].initialLevel, 
-            $objJson[i].maxLevel, 
-            $objJson[i].name, 
-            $objJson[i].nickname, 
             $objJson[i].note.replaceAll("\n", "<改行>"), 
-            $objJson[i].profile.replaceAll("\n", "<改行>"), 
         ];
         rows.push(col.join("\t"));
     }
@@ -130,26 +130,26 @@ function convertActorsCsvToJson() {
 
         actor = newActor();
         actor.id = parseInt(col[0]);
-        actor.battlerName = col[1];
-        actor.characterIndex = parseInt(col[2]);
-        actor.characterName = col[3];
-        actor.classId = parseInt(col[4]);
+        actor.name = col[1];
+        actor.nickname = col[2];
+        actor.classId = parseInt(col[3]);
+        actor.initialLevel = parseInt(col[4]);
+        actor.maxLevel = parseInt(col[5]);
+        actor.profile = col[6];
+        actor.faceName = col[7];
+        actor.faceIndex = parseInt(col[8]);
+        actor.characterName = col[9];
+        actor.characterIndex = parseInt(col[10]);
+        actor.battlerName = col[11];
         actor.equips = [
-            parseInt(col[5]), 
-            parseInt(col[6]), 
-            parseInt(col[7]), 
-            parseInt(col[8]), 
-            parseInt(col[9])
+            parseInt(col[12]), 
+            parseInt(col[13]), 
+            parseInt(col[14]), 
+            parseInt(col[15]), 
+            parseInt(col[16]), 
         ];
-        actor.faceIndex = parseInt(col[10]);
-        actor.faceName = col[11];
-        actor.traits = decodeJsonData(col[12]);
-        actor.initialLevel = parseInt(col[13]);
-        actor.maxLevel = parseInt(col[14]);
-        actor.name = col[15];
-        actor.nickname = col[16];
-        actor.note = col[17];
-        actor.profile = col[18];
+        actor.traits = decodeJsonData(col[17]);
+        actor.note = col[18];
 
         json.push(actor);
     }
