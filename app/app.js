@@ -46,7 +46,15 @@ function encodeJsonData(json) {
 }
 
 function decodeJsonData(str) {
-    return JSON.parse(decodeURIComponent(str));
+    let parsed
+    
+    try {
+        parsed = JSON.parse(decodeURIComponent(str));
+    } catch (ex) {
+        console.log('decodeJsonData error: ', ex.message);
+    }
+
+    return parsed;
 }
 
  function ext(file) {
