@@ -56,6 +56,8 @@ function skills() {
 
                 tmpJson = JSON.stringify($objJson);
                 tmpJson = tmpJson.replaceAll("<改行>", "\\n");
+                tmpJson = tmpJson.replaceAll("“", "\\\"");
+                tmpJson = tmpJson.replaceAll("”", "\\\"");
 
                 const blob = new Blob([tmpJson], {type: 'text/plain'});
                 url = URL.createObjectURL(blob);
