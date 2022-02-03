@@ -121,7 +121,7 @@ function convertStatesJsonToCsv() {
             $objJson[i].message3, 
             $objJson[i].message4,
             encodeJsonData($objJson[i].traits), 
-            $objJson[i].note.replaceAll("\n", "<改行>"), 
+            $objJson[i].note ? $objJson[i].note.replaceAll("\n", "<改行>") : '', 
             $objJson[i].releaseByDamage, 
             $objJson[i].messageType, 
         ];

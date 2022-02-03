@@ -127,7 +127,7 @@ function convertEnemiesJsonToCsv() {
             $objJson[i].dropItems[2].denominator, 
             encodeJsonData($objJson[i].actions), 
             encodeJsonData($objJson[i].traits), 
-            $objJson[i].note.replaceAll("\n", "<改行>"), 
+            $objJson[i].note ? $objJson[i].note.replaceAll("\n", "<改行>") : '', 
         ];
         rows.push(col.join("\t"));
     }

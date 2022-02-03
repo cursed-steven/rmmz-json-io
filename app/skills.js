@@ -106,7 +106,7 @@ function convertSkillsJsonToCsv() {
             $objJson[i].id, 
             $objJson[i].name, 
             $objJson[i].iconIndex, 
-            $objJson[i].description.replaceAll("\n", "<改行>"), 
+            $objJson[i].description ? $objJson[i].description.replaceAll("\n", "<改行>") : '', 
             $objJson[i].stypeId, 
             $objJson[i].mpCost, 
             $objJson[i].tpCost, 
@@ -128,7 +128,7 @@ function convertSkillsJsonToCsv() {
             $objJson[i].damage.variance, 
             $objJson[i].damage.critical, 
             encodeJsonData($objJson[i].effects), 
-            $objJson[i].note.replaceAll("\n", "<改行>"), 
+            $objJson[i].note ? $objJson[i].note.replaceAll("\n", "<改行>") : '', 
             $objJson[i].messageType, 
         ];
         rows.push(col.join("\t"));

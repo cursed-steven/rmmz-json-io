@@ -96,7 +96,7 @@ function convertArmorsJsonToCsv() {
             $objJson[i].id, 
             $objJson[i].name, 
             $objJson[i].iconIndex, 
-            $objJson[i].description.replaceAll("\n", "<改行>"),
+            $objJson[i].description ? $objJson[i].description.replaceAll("\n", "<改行>") : '',
             $objJson[i].atypeId, 
             $objJson[i].etypeId, 
             $objJson[i].price, 
@@ -109,7 +109,7 @@ function convertArmorsJsonToCsv() {
             $objJson[i].params[0], 
             $objJson[i].params[1], 
             encodeJsonData($objJson[i].traits), 
-            $objJson[i].note.replaceAll("\n", "<改行>"), 
+            $objJson[i].note ? $objJson[i].note.replaceAll("\n", "<改行>") : '', 
         ];
         rows.push(col.join("\t"));
     }
