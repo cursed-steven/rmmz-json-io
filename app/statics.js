@@ -14,5 +14,6 @@
     //troops: 'Troops', 
     weapons: 'Weapons', 
     armors: 'Armors', 
+    iconSetBuilder: 'IconSetBuilder'
 };
 
