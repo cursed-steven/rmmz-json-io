@@ -41,9 +41,7 @@ function iconSetBuilder() {
         });
 
         cells[i].addEventListener("dblclick", (ev) => {
-            for (const child of cells[i].children) {
-                cells[i].removeChild(child);
-            }
+            cells[i].innerHTML = "";
             cells[i].appendChild(spacer());
         });            
     }
