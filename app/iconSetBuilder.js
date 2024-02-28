@@ -39,6 +39,13 @@ function iconSetBuilder() {
             cells[i].classList.remove("dragover");
             organizeFiles(ev.dataTransfer.files, i);
         });
+
+        cells[i].addEventListener("dblclick", (ev) => {
+            for (const child of cells[i].children) {
+                cells[i].removeChild(child);
+            }
+            cells[i].appendChild(spacer());
+        });            
     }
 }
 
@@ -63,19 +70,23 @@ function tr() {
     return trDom;
 }
 
-function tr1() {
-    let trDom = document.createElement("tr");
-
+function spacer() {
     let spacer = document.createElement("img");
     spacer.src = "images/spacer.gif";
     spacer.width = ICON_SIZE;
     spacer.height = ICON_SIZE;
     spacer.setAttribute("style", "vertical-align:bottom;margin:0;padding:0;");
 
+    return spacer;
+}
+
+function tr1() {
+    let trDom = document.createElement("tr");
+
     let tdDom = document.createElement("td");
     tdDom.setAttribute("class", "iconCell");
     tdDom.setAttribute("style", "margin:0;padding:0;max-width:32px;max-height:" + ICON_SIZE + "px;");
-    tdDom.appendChild(spacer);
+    tdDom.appendChild(spacer());
     trDom.appendChild(tdDom);
 
     return trDom;
@@ -89,11 +100,15 @@ function organizeFiles(files, i) {
         return;
     }    
 
-    outputFile(file, i);
+    if (i === 320) {
+        outputAndOverlayFile(file, i);        
+    } else {
+        outputFile(file, i);        
+    }
 }
 
 function outputFile(file, i) {
-    console.log({ file, i });
+    // console.log({ file, i });
 
     let image = new Image();
     const blobUrl = URL.createObjectURL(file);
@@ -105,6 +120,42 @@ function outputFile(file, i) {
         const cell = document.getElementById("iconIndex-" + i);
         const child = cell.childNodes[0];
         cell.removeChild(child);
+        cell.appendChild(image);
+    });
+}
+
+function outputAndOverlayFile(file, i) {
+    // console.log({ file, i });
+
+    let image = new Image();
+    const blobUrl = URL.createObjectURL(file);
+    image.src = blobUrl;
+    image.setAttribute("style", "position:absolute;vertical-align:bottom;margin:0;padding:0;");
+
+
+    image.addEventListener("load", () => { 
+        URL.revokeObjectURL(blobUrl);
+        const cell = document.getElementById("iconIndex-" + i);
+        const children = cell.childNodes;
+        let zMax = 0;
+        if (children.length === 1) {
+            const child = cell.childNodes[0];
+            if (child.getAttribute("src").includes("spacer.gif")) {
+                cell.removeChild(child);
+                image.style.zIndex = 0;
+            } else {
+                image.style.zIndex = 1;
+            }
+        } else {
+            children.forEach((node, ni) => {
+                if (zMax < node.style.zIndex) {
+                    zMax = node.style.zIndex;
+                }
+            });
+            // console.log({ zMax });
+
+            image.style.zIndex = parseInt(zMax) + 1;
+        }
         cell.appendChild(image);
     });
 }
