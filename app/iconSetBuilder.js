@@ -11,8 +11,12 @@ function iconSetBuilder() {
         tableDom.appendChild(trDom);
     }
     tableDom.setAttribute("style", "height: " + ICON_SIZE * lines + "px;");
-
     $('#iconTable').append(tableDom);
+
+    let tableDom2 = document.createElement("table");
+    tableDom2.appendChild(tr1());
+    tableDom2.setAttribute("style", "height: " + ICON_SIZE + "px;");
+    $('#simulator').append(tableDom2);
 
     const cells = document.getElementsByClassName("iconCell");
     // console.log(cells);
@@ -55,6 +59,24 @@ function tr() {
         tdDom.appendChild(spacer);
         trDom.appendChild(tdDom);
     }
+
+    return trDom;
+}
+
+function tr1() {
+    let trDom = document.createElement("tr");
+
+    let spacer = document.createElement("img");
+    spacer.src = "images/spacer.gif";
+    spacer.width = ICON_SIZE;
+    spacer.height = ICON_SIZE;
+    spacer.setAttribute("style", "vertical-align:bottom;margin:0;padding:0;");
+
+    let tdDom = document.createElement("td");
+    tdDom.setAttribute("class", "iconCell");
+    tdDom.setAttribute("style", "margin:0;padding:0;max-width:32px;max-height:" + ICON_SIZE + "px;");
+    tdDom.appendChild(spacer);
+    trDom.appendChild(tdDom);
 
     return trDom;
 }
